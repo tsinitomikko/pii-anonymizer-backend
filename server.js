@@ -17,7 +17,10 @@ app.post('/validate', (req, res) => {
     return res.status(400).json({ error: 'Text input is required.' });
   }
 
-  const pythonProcess = spawn('python', [path.join(__dirname, 'pii_detector.py'), text]);
+  // pii_detector_presidio
+  const pythonProcess = spawn('python', [path.join(__dirname, 'pii_detector_presidio.py'), text]);
+  // pii_detector_guardrails
+  //const pythonProcess = spawn('python', [path.join(__dirname, 'pii_detector_guardrails.py'), text]);
 
   let pythonStdout = '';
   let pythonStderr = '';
